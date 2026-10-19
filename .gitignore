@@ -1,0 +1,13 @@
+# Dependencies cài cục bộ
+node_modules/
+
+# Bí mật và dữ liệu SQL Server local
+.env
+.env.*
+*.bak
+*.mdf
+*.ldf
+
+
+.agents/
+.plans/

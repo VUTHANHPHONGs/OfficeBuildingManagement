@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "check": "node --check assets/app.js"
+  },
+  "dependencies": {
+    "ui-ux-pro-max-cli": "^2.15.0"
+  }
+}
