@@ -142,7 +142,7 @@
     if (!config.apiBase) { reportState[id] = { summary: {}, rows: [], message: "Chưa cấu hình API/SQL Server nên không có số liệu tài chính để hiển thị." }; return render(); }
     const query = new URLSearchParams(new FormData(form));
     const restore = setButtonBusy(form.querySelector('[type="submit"]'), "Đang tải…");
-    try { const result = await request(`/reports/${reports[id].endpoint}?${query}`); reportState[id] = { ...result, message: "" }; await render(); } catch (error) { restore(); reportState[id] = { summary: {}, rows: [], message: explainError(error) }; await render(); }
+    try { const result = await request(`/reports/${reports[id].endpoint}?${query}`); reportState[id] = { ...result, message: result.message || "" }; await render(); } catch (error) { restore(); reportState[id] = { summary: {}, rows: [], message: explainError(error) }; await render(); }
   }
   function exportCsv(id) {
     const report = reports[id]; const rows = reportState[id]?.rows || []; const values = [report.columns.map(([, label]) => label), ...rows.map((row) => report.columns.map(([key]) => row[key] ?? ""))];

@@ -2,9 +2,12 @@
 
 ## Yêu cầu môi trường
 
-- **Python 3**: chạy HTTP server cục bộ cho giao diện.
-- **Node.js 18 trở lên và npm**: cài dependency và chạy kiểm tra cú pháp JavaScript. Dự án đã được kiểm tra với Node.js 21 và npm 10.
+- **Node.js 22 trở lên và npm**: chạy ExpressJS, cài dependency và kiểm tra mã. Đây là yêu cầu của driver SQL Server đang dùng.
 - **Trình duyệt**: Chrome, Edge hoặc Firefox.
+
+SQL Server chưa cần thiết để chạy local: ExpressJS lưu CRUD vào `data/local-db.json`, một tệp chỉ có trên máy local. SQL Server chỉ cần khi tích hợp dữ liệu thật của TV3–TV5.
+
+> Máy hiện tại đang dùng Node.js 21. Cần nâng lên Node.js 22 LTS hoặc mới hơn trước khi chạy server trong môi trường được dependency SQL Server hỗ trợ.
 
 
 
@@ -19,20 +22,29 @@ npm ci
 Kiểm tra công cụ đã sẵn sàng:
 
 ```powershell
-python --version
 node --version
 npm --version
 ```
 
 ## Chạy ứng dụng
 
-Sau khi cài dependency, chạy một HTTP server tĩnh từ thư mục dự án:
+Sau khi cài dependency, chạy ExpressJS từ thư mục dự án:
 
 ```powershell
-python -m http.server 4173
+npm start
 ```
 
-Sau đó mở `http://localhost:4173`.
+Sau đó mở `http://127.0.0.1:3000`.
+
+Khi cần tự khởi động lại server sau mỗi lần sửa mã backend:
+
+```powershell
+npm run dev
+```
+
+## Kết nối SQL Server sau này
+
+Sao chép `.env.example` thành `.env`, rồi điền thông tin SQL Server do TV3 cung cấp. Chỉ đổi `DATA_MODE=sqlserver` khi đã nhận lược đồ cuối cùng, data dictionary, Stored Procedure của TV4 và mã lỗi Trigger của TV5. Không commit `.env` hoặc tệp `data/local-db.json`.
 
 Kiểm tra cú pháp JavaScript:
 
