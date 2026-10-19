@@ -1,9 +1,32 @@
 # XÂY DỰNG HỆ CSDL QUẢN LÝ CHUỖI TÒA NHÀ VĂN PHÒNG CHO THUÊ
 
+## Yêu cầu môi trường
+
+- **Python 3**: chạy HTTP server cục bộ cho giao diện.
+- **Node.js 18 trở lên và npm**: cài dependency và chạy kiểm tra cú pháp JavaScript. Dự án đã được kiểm tra với Node.js 21 và npm 10.
+- **Trình duyệt**: Chrome, Edge hoặc Firefox.
+
+
+
+## Cài đặt
+
+Từ thư mục gốc dự án, cài dependency theo lockfile:
+
+```powershell
+npm ci
+```
+
+Kiểm tra công cụ đã sẵn sàng:
+
+```powershell
+python --version
+node --version
+npm --version
+```
 
 ## Chạy ứng dụng
 
-Không cần cài thêm package. Từ thư mục dự án, chạy một HTTP server tĩnh, ví dụ:
+Sau khi cài dependency, chạy một HTTP server tĩnh từ thư mục dự án:
 
 ```powershell
 python -m http.server 4173
